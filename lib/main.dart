@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_201/core/app_theme.dart';
-import 'package:task_201/view/screens/chat_screen.dart';
 import 'package:task_201/view/screens/home_screen.dart';
 import 'package:task_201/view_models/progress_card_provider.dart';
 import 'package:task_201/view_models/toggle_card_provider.dart';
@@ -23,8 +22,7 @@ class MainApp extends StatelessWidget {
       builder:
           (context, child) => MaterialApp(
             debugShowCheckedModeBanner: false,
-            // home: HomeScreen(),
-            home: ChatScreen(),
+            home: HomeScreen(),
             theme: AppTheme.lightTheme,
           ),
     );
