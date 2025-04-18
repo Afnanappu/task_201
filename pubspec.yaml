@@ -1,14 +1,19 @@
 name: task_201
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
   sdk: ^3.7.0
 
 dependencies:
+  animated_bottom_navigation_bar: ^1.4.0
+  carousel_slider: ^5.0.0
   flutter:
     sdk: flutter
+  flutter_custom_clippers: ^2.1.0
+  google_fonts: ^6.2.1
+  provider: ^6.1.4
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +22,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
