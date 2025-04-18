@@ -13,6 +13,8 @@ class ChatScreen extends StatelessWidget {
     return Scaffold(
       appBar: ChatAppBar(),
       body: ChatBodyListWidget(),
+      backgroundColor: Color(0xFFE9F0F9),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
         height: 70,
         width: 70,
@@ -22,15 +24,11 @@ class ChatScreen extends StatelessWidget {
           ),
           backgroundColor: AppColors.primaryColorB,
           onPressed: () {},
-
           child: CircleAvatar(
-            // backgroundColor: Colors.white,
             child: Center(child: Image.asset('assets/chat_logo.png')),
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      backgroundColor: Color(0xFFE9F0F9),
       bottomNavigationBar: ChatBottomBar(),
     );
   }

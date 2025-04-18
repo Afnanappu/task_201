@@ -5,7 +5,7 @@ import 'package:task_201/view/widgets/carousel_widget.dart';
 
 import 'package:task_201/view/widgets/home_app_bar.dart';
 import 'package:task_201/view/widgets/progress_indicator_widget.dart';
-import 'package:task_201/viewmodel/progress_card_provider.dart';
+import 'package:task_201/view_models/progress_card_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});

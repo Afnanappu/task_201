@@ -8,6 +8,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      toolbarHeight: kToolbarHeight + 30,
       leading: IconButton.outlined(
         onPressed: () {
           Navigator.of(context).pushReplacement(
@@ -23,11 +24,18 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: ListTile(
         contentPadding: EdgeInsets.zero,
         leading: Image.asset('assets/chat_logo.png', height: 40),
-        title: const Text('JOHN DOE'),
-        subtitle: const Text('Online'),
+        title: const Text(
+          'JOHN DOE',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+        ),
+        subtitle: const Text(
+          'Online',
+          style: TextStyle(color: AppColors.primaryColorA),
+        ),
       ),
       actions: [
         PopupMenuButton(
+          icon: Icon(Icons.more_vert_outlined, color: Colors.black, size: 32),
           itemBuilder: (context) {
             return [];
           },
@@ -37,5 +45,5 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 25);
 }

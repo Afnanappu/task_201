@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_201/core/app_colors.dart';
-import 'package:task_201/viewmodel/progress_card_provider.dart';
+import 'package:task_201/view_models/progress_card_provider.dart';
 
 class ProgressIndicatorWidget extends StatelessWidget {
   const ProgressIndicatorWidget({super.key});

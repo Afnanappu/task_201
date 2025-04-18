@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:task_201/core/app_colors.dart';
 
@@ -6,26 +7,31 @@ class ChatBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipPath(
-      // clipper: FabClipper(),
-      child: Container(
-        height: 100,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.3),
-              blurRadius: 5,
-              offset: Offset(0, 5),
+    return Stack(
+      alignment: Alignment(0, 0),
+      children: [
+        AbsorbPointer(
+          child: PhysicalShape(
+            clipper: ShapeBorderClipper(shape: RoundedRectangleBorder()),
+            color: Colors.transparent,
+            clipBehavior: Clip.antiAlias,
+            child: ClipRRect(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+              child: CurvedNavigationBar(
+                backgroundColor: Colors.transparent,
+                index: 1,
+                items: <Widget>[
+                  Icon(Icons.add_location, size: 30, color: Colors.white),
+                  Icon(Icons.alarm, size: 30, color: Colors.white),
+                  Icon(Icons.alarm, size: 30, color: Colors.white),
+                ],
+                onTap: (index) {},
+              ),
             ),
-          ],
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(50),
-            topRight: Radius.circular(50),
           ),
         ),
-        child: Row(
+
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton.filled(
@@ -54,39 +60,7 @@ class ChatBottomBar extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      ],
     );
   }
-}
-
-// Custom Clipper for circular cutout at top center
-class FabClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    final radius = 30.0; // Half of FAB size (default FAB diameter ~56dp)
-    final centerX = size.width / 2;
-
-    // Start at top-left, offset by radius for cutout depth
-    path.moveTo(0, radius);
-    // Line to start of cutout
-    path.lineTo(centerX - radius, radius);
-    // Circular cutout
-    path.arcToPoint(
-      Offset(centerX + radius, radius),
-      radius: Radius.circular(radius),
-      clockwise: false,
-    );
-    // Continue to top-right
-    path.lineTo(size.width, radius);
-    // Rest of the container
-    path.lineTo(size.width, size.height);
-    path.lineTo(0, size.height);
-    path.close();
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

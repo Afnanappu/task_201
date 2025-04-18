@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:task_201/view/widgets/custom_card.dart';
-import 'package:task_201/viewmodel/progress_card_provider.dart';
-import 'package:task_201/viewmodel/toggle_card_provider.dart';
+import 'package:task_201/view_models/progress_card_provider.dart';
+import 'package:task_201/view_models/toggle_card_provider.dart';
 
 class CarouselWidget extends StatelessWidget {
   const CarouselWidget({super.key, required this.carouselController});
@@ -38,10 +38,10 @@ class CarouselWidget extends StatelessWidget {
                 return Consumer<ToggleCardProvider>(
                   builder:
                       (context, toggler, child) => FlipCard(
-                        toggler: toggler.isToggle,
+                        toggler: toggler.isToggled(i),
                         backCard: GestureDetector(
                           onTap: () {
-                            context.read<ToggleCardProvider>().toggle();
+                            context.read<ToggleCardProvider>().toggle(i);
                           },
                           child: CustomCard(
                             child: Center(
@@ -77,7 +77,9 @@ class CarouselWidget extends StatelessWidget {
                                 SizedBox(height: 20),
                                 IconButton.filled(
                                   onPressed: () {
-                                    context.read<ToggleCardProvider>().toggle();
+                                    context.read<ToggleCardProvider>().toggle(
+                                      i,
+                                    );
                                   },
                                   icon: Icon(Icons.arrow_forward_ios_outlined),
                                   color: Colors.black,
